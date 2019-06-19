@@ -1,0 +1,48 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Meetings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.start_time.strftime("%H:%M") %></td>
+        <td><%= link_to 'Show', meeting %></td>
+        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meeting', new_meeting_path %>
+
+<h2>Diary</h2>
+  <%# <div class="showd"></div>
+    <% @diary.each do |diary| %> %>
+  <%#= link_to "Write", new_diary_path %>
+
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date.day %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %><a href="/meetings">        
+      <%= meeting.start_time.strftime("%Y-%m-%d %H:%M") %>
+      <%#= link_to 'Show', meeting %>
+    </div>
+  <% end %>
+<% end %>
