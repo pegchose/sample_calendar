@@ -1,4 +1,10 @@
 <%# <h1>Blogs#index</h1>
 <p>Find me in app/views/blogs/index.html.erb</p> %>
 
-<div class="a day">
+<div class="a day">Diary
+  <% @blog.each do |blog| %>
+    <%= @blog.created_at %>
+      <%= @blog.title %><a href="blogs#show">
+    <% end %>
+</div>
+  
